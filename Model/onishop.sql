@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 08, 2022 lúc 01:57 PM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.1.6
+-- Thời gian đã tạo: Th5 03, 2024 lúc 06:07 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,29 +32,31 @@ CREATE TABLE `binhluan1` (
   `mahh` int(11) NOT NULL,
   `makh` int(11) NOT NULL,
   `ngaybl` date NOT NULL,
-  `noidung` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `noidung` text NOT NULL,
+  `sosao` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `binhluan1`
 --
 
-INSERT INTO `binhluan1` (`mabl`, `mahh`, `makh`, `ngaybl`, `noidung`) VALUES
-(1, 3, 7, '2020-08-14', '  gghnn'),
-(2, 4, 7, '2020-08-14', '  nhẹ và đẹp'),
-(3, 3, 5, '2020-08-14', 'lịch sự, nhã nhặn'),
-(4, 3, 5, '2020-08-14', '  đẹp và lịch sự'),
-(5, 3, 5, '2020-08-14', '  đẹp và lịch sự'),
-(6, 3, 5, '2020-08-14', '  đẹp và lịch sự'),
-(7, 3, 5, '2020-08-14', '  đẹp và lịch sự'),
-(8, 3, 5, '2020-08-14', '  dfgdfsg'),
-(9, 3, 5, '2020-08-14', '  dfgdfsg'),
-(10, 3, 5, '2020-08-14', '  dfgdfsg'),
-(11, 3, 5, '2020-08-14', '  dfgdfsg'),
-(12, 3, 5, '2020-08-14', '  dfgdfsg'),
-(13, 3, 5, '2020-08-14', '  hello'),
-(14, 3, 5, '2020-08-14', '  hello'),
-(15, 3, 5, '2020-08-14', '  hello');
+INSERT INTO `binhluan1` (`mabl`, `mahh`, `makh`, `ngaybl`, `noidung`, `sosao`) VALUES
+(1, 3, 7, '2020-08-14', '  gghnn', 3),
+(2, 4, 7, '2020-08-14', '  nhẹ và đẹp', 2),
+(3, 3, 5, '2020-08-14', 'lịch sự, nhã nhặn', 5),
+(4, 3, 5, '2020-08-14', '  đẹp và lịch sự', 1),
+(5, 3, 5, '2020-08-14', '  đẹp và lịch sự', 2),
+(6, 3, 5, '2020-08-14', '  đẹp và lịch sự', 3),
+(7, 3, 5, '2020-08-14', '  đẹp và lịch sự', 4),
+(8, 3, 5, '2020-08-14', '  dfgdfsg', 2),
+(9, 3, 5, '2020-08-14', '  dfgdfsg', 1),
+(10, 3, 5, '2020-08-14', '  dfgdfsg', 4),
+(11, 3, 5, '2020-08-14', '  dfgdfsg', 2),
+(12, 3, 5, '2020-08-14', '  dfgdfsg', 3),
+(13, 3, 5, '2020-08-14', '  hello', 3),
+(14, 3, 5, '2020-08-14', '  hello', NULL),
+(15, 3, 5, '2020-08-14', '  hello', NULL),
+(16, 11, 8, '2024-05-03', '  đẹp', 3);
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,7 @@ CREATE TABLE `cthoadon1` (
   `size` int(3) NOT NULL,
   `thanhtien` int(11) NOT NULL,
   `tinhtrang` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `cthoadon1`
@@ -111,7 +113,7 @@ CREATE TABLE `hanghoa` (
   `soluongton` int(11) NOT NULL,
   `mausac` varchar(20) NOT NULL,
   `size` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `hanghoa`
@@ -153,7 +155,7 @@ CREATE TABLE `hoadon1` (
   `makh` int(11) NOT NULL,
   `ngaydat` date NOT NULL,
   `tongtien` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `hoadon1`
@@ -173,7 +175,8 @@ INSERT INTO `hoadon1` (`masohd`, `makh`, `ngaydat`, `tongtien`) VALUES
 (11, 7, '2020-08-13', 2035000),
 (12, 7, '2020-08-13', 2035000),
 (13, 5, '2020-09-02', 545000),
-(14, 7, '2020-09-09', 545000);
+(14, 7, '2020-09-09', 545000),
+(15, 8, '2024-05-03', 0);
 
 -- --------------------------------------------------------
 
@@ -190,7 +193,7 @@ CREATE TABLE `khachhang1` (
   `diachi` text NOT NULL,
   `sodienthoai` varchar(12) NOT NULL,
   `vaitro` int(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `khachhang1`
@@ -201,7 +204,8 @@ INSERT INTO `khachhang1` (`makh`, `tenkh`, `username`, `matkhau`, `email`, `diac
 (4, 'a', 'a', '202cb962ac59075b964b07152d234b70', 'a@gmail.com', '', '', 0),
 (5, 'an', 'an', '202cb962ac59075b964b07152d234b70', 'an@gmail.com', '', '', 0),
 (6, 'an', 'an', '202cb962ac59075b964b07152d234b70', 'an@gmail.com', '', '', 0),
-(7, 'Nguyên', 'nguyen', '202cb962ac59075b964b07152d234b70', 'nguyen@gmail.com', '', '', 0);
+(7, 'Nguyên', 'nguyen', '202cb962ac59075b964b07152d234b70', 'nguyen@gmail.com', '', '', 0),
+(8, 'Nguyễn Thành Luân', 'oni123', 'c8b9e50a7feb88fa2c4d77f10aab7e02', 'aetaxongpha03@gmail.com', '0353088072', 'Ấp 11, xã bì', 0);
 
 -- --------------------------------------------------------
 
@@ -213,7 +217,7 @@ CREATE TABLE `loai` (
   `maloai` int(11) NOT NULL,
   `tenloai` varchar(50) NOT NULL,
   `idmenu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `loai`
@@ -240,7 +244,7 @@ CREATE TABLE `menu` (
   `idmenu` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `link` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `menu`
@@ -262,7 +266,8 @@ INSERT INTO `menu` (`idmenu`, `name`, `link`) VALUES
 --
 ALTER TABLE `binhluan1`
   ADD PRIMARY KEY (`mabl`),
-  ADD KEY `fk_bl_kh` (`makh`);
+  ADD KEY `fk_bl_kh` (`makh`),
+  ADD KEY `fk_bl_mahh` (`mahh`);
 
 --
 -- Chỉ mục cho bảng `cthoadon1`
@@ -311,7 +316,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT cho bảng `binhluan1`
 --
 ALTER TABLE `binhluan1`
-  MODIFY `mabl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `mabl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `hanghoa`
@@ -323,13 +328,13 @@ ALTER TABLE `hanghoa`
 -- AUTO_INCREMENT cho bảng `hoadon1`
 --
 ALTER TABLE `hoadon1`
-  MODIFY `masohd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `masohd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `khachhang1`
 --
 ALTER TABLE `khachhang1`
-  MODIFY `makh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `makh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `loai`
