@@ -94,10 +94,15 @@
                         $hh = new hanghoa();
                         $slt = $hh->getslt($_GET['id']);
                         $slm = $hh->getslm($_GET['id']);
-                        $result = $slt[0] - $slm['tongsoluong'];
-                        if($result <= 0){
-                            $tam= false;
+                        
+                
+                        if($slm){
+                            $result = $slt[0] - $slm['tongsoluong'];
+                            if($result <= 0){
+                                $tam= false;
+                            }
                         }
+                        
                         ?>
                         <div class="action">
                             <h3 <?php if($tam) echo "hidden"?>>Out Of Stock</h3>
